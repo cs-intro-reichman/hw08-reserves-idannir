@@ -62,8 +62,10 @@ class PlayList {
 
     /** Removes the last track from this list. If the list is empty, does nothing. */
      public void removeLast() {
+        if(size != 0){
         tracks[size-1] = null;
         size--;
+        }
     }
     
     /** Returns the total duration (in seconds) of all the tracks in this list.*/
@@ -126,12 +128,14 @@ class PlayList {
         {
             return ;
         }
-        for(int j = 0; j < (size - i-1); j++)
+        else{
+        for(int j = i; j < (size - 2); j++)
         {
-            tracks[n] = tracks[n +1] ;
+            tracks[j] = tracks[j +1] ;
         }
         tracks[size-1] = null;
         size--;
+    }
     }
 
     /** Removes the first track that has the given title from this list.
