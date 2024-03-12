@@ -1,3 +1,5 @@
+import javax.sound.midi.Track;
+
 /** Represnts a list of musical tracks. The list has a maximum capacity (int),
  *  and an actual size (number of tracks in the list, an int). */
 class PlayList {
@@ -84,7 +86,7 @@ class PlayList {
         //// lowercase
         for(int i = 0; i < size - 1 ; i++)
         {
-            if (((tracks[i].getTitle()).toLowerCase()).equals(title.toLowerCase()) )
+            if (title.equals(tracks[i].getTitle()))
             {
                 return i;
             }
