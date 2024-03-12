@@ -52,12 +52,12 @@ class PlayList {
         StringBuilder sb = new StringBuilder();
         for(int i = 0; i < size; i++)
         {
-            sb.append(Track.toString(tracks[i]));
+            sb.append(tracks[i].toString());
             if (i + 1 != size) {
-                sb.append(Track.toString( "/n")); 
+                sb.append( "/n"); 
             }
         }
-        return sb;
+        return sb.toString();
     }
 
     /** Removes the last track from this list. If the list is empty, does nothing. */
@@ -71,7 +71,7 @@ class PlayList {
        int totalduration = 0;
        for(int i = 0; i < size; i++)
        {
-        totalduration += Track.getDuration(tracks[i]);
+        totalduration += tracks[i].getDuration();
        }
         return totalduration;
     }
@@ -82,7 +82,7 @@ class PlayList {
         //// lowercase
         for(int i = 0; i < size; i++)
         {
-            if (Track.getTitle(tracks[i]).toLowerCase() == title.toLowerCase())
+            if (tracks[i].getTitle().toLowerCase() == title.toLowerCase())
             {
                 return i;
             }
@@ -151,16 +151,16 @@ class PlayList {
     //// An elegant and terribly inefficient implementation.
      public void add(PlayList other) {
         //// size++++++++
-        if (size + Track.getSize(other) > maxSize)
+        if (size + other.getSize() > maxSize)
         {
             return;
         }
         else
         {
-        int i = Track.getSize(other);
+        int i = other.getSize();
         for(int j = 0; j < i; j++)
         {
-            tracks[size+j] = Track.getTrack( tracks[j] );
+            tracks[size+j] = other.getTrack(j);
         }
         size += i;
         }
@@ -175,12 +175,12 @@ class PlayList {
     private int minIndex(int start) {
         if (start >= 0 && start < size)
         {
-            int min = Track.getDuration(tracks[start]);
+            int min = tracks[start].getDuration();
             int index = -1;
             for(int j = start; j < size; j++)
             {
-                if (min >= Track.getDuration(tracks[j])) {
-                    min = Track.getDuration(tracks[j]);
+                if (min >= tracks[j].getDuration()) {
+                    min = tracks[j].getDuration();
                     index = j;
                }
             }
