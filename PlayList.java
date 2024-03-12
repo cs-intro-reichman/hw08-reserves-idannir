@@ -62,7 +62,7 @@ class PlayList {
 
     /** Removes the last track from this list. If the list is empty, does nothing. */
      public void removeLast() {
-        tracks[size] = null;
+        tracks[size-1] = null;
         size--;
     }
     
@@ -82,7 +82,7 @@ class PlayList {
         //// lowercase
         for(int i = 0; i < size; i++)
         {
-            if (tracks[i].getTitle().toLowerCase() == title.toLowerCase())
+            if ((tracks[i].getTitle()).toLowerCase() == title.toLowerCase())
             {
                 return i;
             }
@@ -122,7 +122,7 @@ class PlayList {
     public void remove(int i) {
         //// size--
         int n =i;
-        if(i < 0 || i > size || size == 0)
+        if(i < 0 || i >= size || size == 0)
         {
             return ;
         }
@@ -130,7 +130,7 @@ class PlayList {
         {
             tracks[n] = tracks[n +1] ;
         }
-        tracks[size] = null;
+        tracks[size-1] = null;
         size--;
     }
 
