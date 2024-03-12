@@ -84,7 +84,7 @@ class PlayList {
         //// lowercase
         for(int i = 0; i < size - 1 ; i++)
         {
-            if ((tracks[i].getTitle()).toLowerCase().equals(title.toLowerCase()) )
+            if (((tracks[i].getTitle()).toLowerCase()).equals(title.toLowerCase()) )
             {
                 return i;
             }
