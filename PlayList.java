@@ -1,5 +1,3 @@
-import javax.sound.midi.Track;
-
 /** Represnts a list of musical tracks. The list has a maximum capacity (int),
  *  and an actual size (number of tracks in the list, an int). */
 class PlayList {
@@ -42,7 +40,7 @@ class PlayList {
             return false;
         }
         else{
-            tracks[size + 1] = track;
+            tracks[size] = track;
             size++;
             return true;
        }
@@ -84,9 +82,12 @@ class PlayList {
      *  If such a track is not found, returns -1. */
     public int indexOf(String title) {
         //// lowercase
+        String lowtitle = title.toLowerCase();
+        String lowtrack = "";
         for(int i = 0; i < size - 1 ; i++)
         {
-            if (title.equals(tracks[i].getTitle()))
+            lowtrack = tracks[i].getTitle().toLowerCase();
+            if (lowtitle.equals(lowtrack))
             {
                 return i;
             }
@@ -112,7 +113,7 @@ class PlayList {
         {
             for(int j=0; j<(size - i); j++)
             {
-                tracks[size-j +1 ] = tracks[size-j] ;
+                tracks[size-j] = tracks[size-j-1] ;
             }
             tracks[i] = track;
             size++; 
